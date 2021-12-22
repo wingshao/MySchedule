@@ -12,15 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".log.LogActivity"></activity>
-        <activity android:name=".history.HistoryActivity" />
-        <activity android:name=".plan.ScheduleAcitvity" />
-        <activity android:name=".plan.PlanActivity" />
-        <activity android:name=".today.TodayActivity" />
-        <activity android:name=".BaseActivity" />
-        <activity android:name=".AboutActivity" />
-        <activity
-            android:name=".MainActivity"
+        <activity android:name=".GuideActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +20,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".log.LogActivity" />
+        <activity android:name=".history.HistoryActivity" />
+        <activity android:name=".plan.ScheduleAcitvity" />
+        <activity android:name=".plan.PlanActivity" />
+        <activity android:name=".today.TodayActivity" />
+        <activity android:name=".BaseActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>
