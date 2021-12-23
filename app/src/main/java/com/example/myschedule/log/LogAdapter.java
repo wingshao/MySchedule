@@ -29,11 +29,13 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
         View logView;
         TextView dateTx;
         TextView contentTx;
+        Button deleteBtn;
 
         public ViewHolder(View view) {
             super(view);
             logView=view;
             contentTx=(TextView)view.findViewById(R.id.log_content);
+            deleteBtn=(Button)view.findViewById(R.id.delete);
         }
     }
 
@@ -54,6 +56,21 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         Logs logs=mLogsList.get(position);
         holder.contentTx.setText(logs.getContent());
+        holder.logView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                holder.deleteBtn.setVisibility(View.VISIBLE);
+                return false;
+            }
+        });
+        holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mLogsList.remove(position);
+                logs.delete();
+                LogActivity.logadapter.notifyDataSetChanged();
+            }
+        });
         try {
             holder.logView.setBackgroundColor(Color.parseColor(randomColor()));
         }catch (Exception e){
@@ -75,7 +92,6 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
         R=Integer.toHexString(random.nextInt(256)).toUpperCase();
         G=Integer.toHexString(random.nextInt(256)).toUpperCase();
         B=Integer.toHexString(random.nextInt(256)).toUpperCase();
-
         R=R.length()==1?"0"+R:R;
         G=G.length()==1?"0"+G:G;
         B=B.length()==1?"0"+B:B;

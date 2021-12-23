@@ -38,7 +38,7 @@ public class LogActivity extends AppCompatActivity {
 
     private List<Logs> dataList;
 
-    private LogAdapter logadapter;
+    public static LogAdapter logadapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
